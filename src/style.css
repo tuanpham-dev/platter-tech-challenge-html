@@ -98,6 +98,7 @@ a {
   .swiper-scrollbar-drag {
     background-color: var(--color-stone-800);
     height: 4px;
+    transition: height 0.3s ease, margin-top 0.3s ease;
   }
 
   .swiper-scrollbar:hover,
