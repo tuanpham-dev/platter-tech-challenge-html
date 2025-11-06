@@ -1,10 +1,10 @@
-if (!customElements.get('product-list')) {
+if (!customElements.get('products-list')) {
   const SELECTORS = {
     SHOW_MORE_BUTTON: '.products-list__show-more-button',
     CAROUSEL: '.products-list__carousel',
   }
 
-  customElements.define('product-list', class extends HTMLElement {
+  customElements.define('products-list', class extends HTMLElement {
     constructor() {
       super();
     }
