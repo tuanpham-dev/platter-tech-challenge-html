@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&family=Poppins:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 
+@import 'swiper/css';
+@import 'swiper/css/scrollbar';
 @import "tailwindcss";
 
 @theme {
@@ -15,9 +17,11 @@
   --text-badge-desktop: 0.625rem;
   --leading-heading: 1.2;
 
+  --color-white: #fffffa;
   --color-stone-300: #cfcfcf;
   --color-stone-600: #5c553a;
   --color-stone-800: #231f20;
+  --color-zinc-300: #ddd6d7;
   --color-zinc-900: #1c1d1d;
   --color-neutral-500: #707070;
 
@@ -77,5 +81,56 @@ a {
 
   &:hover {
     opacity: 0.8;
+  }
+}
+
+.products-list {
+  .swiper-scrollbar.swiper-scrollbar-horizontal {
+    position: relative;
+    left: 0;
+    bottom: auto;
+    top: auto;
+    width: 100%;
+    height: 4px;
+    background-color: var(--color-zinc-300);
+  }
+
+  .swiper-scrollbar-drag {
+    background-color: var(--color-stone-800);
+    height: 4px;
+  }
+
+  .swiper-scrollbar:hover,
+  .swiper-scrollbar[data-is-dragging] {
+    .swiper-scrollbar-drag {
+      margin-top: -1px;
+      height: 6px;
+    }
+  }
+}
+
+.products-list__carousel {
+  overflow: visible;
+
+  .product-card {
+    @media (min-width: 1024px) {
+      width: 23%;
+      max-width: 355px;
+    }
+  }
+}
+
+.products-list__carousel-wrapper {
+  @media (max-width: 1023px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 11px;
+    row-gap: 12px;
+  }
+}
+
+.products-list[data-has-show-more][data-is-collapsed] .product-card:nth-child(n + 5) {
+  @media (max-width: 1023px) {
+    display: none;
   }
 }
