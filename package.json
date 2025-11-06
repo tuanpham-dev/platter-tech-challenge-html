@@ -1,0 +1,22 @@
+{
+  "name": "platter-tech-challenge-25",
+  "version": "1.0.0",
+  "description": "Platter Tech Challenge using HTML and Tailwind CSS",
+  "scripts": {
+    "dev": "concurrently \"pnpm run watch\" \"npx live-server --port=3000\"",
+    "watch": "tailwindcss -i ./src/style.css -o ./assets/style.css --watch",
+    "build": "tailwindcss -i ./src/style.css -o ./assets/style.css --minify"
+  },
+  "keywords": [
+    "html",
+    "tailwindcss"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.16",
+    "concurrently": "^9.2.1",
+    "live-server": "^1.2.2",
+    "tailwindcss": "^4.1.16"
+  }
+}
