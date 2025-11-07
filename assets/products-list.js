@@ -2,6 +2,7 @@ if (!customElements.get('products-list')) {
   const SELECTORS = {
     SHOW_MORE_BUTTON: '.products-list__show-more-button',
     CAROUSEL: '.products-list__carousel',
+    SCROLLBAR: '.swiper-scrollbar'
   }
 
   customElements.define('products-list', class extends HTMLElement {
@@ -17,6 +18,7 @@ if (!customElements.get('products-list')) {
 
       // Carousel
       this.carousel = this.querySelector(SELECTORS.CAROUSEL);
+      this.scrollbar = this.querySelector(SELECTORS.SCROLLBAR);
       this.initCarousel();
     }
 
@@ -55,7 +57,7 @@ if (!customElements.get('products-list')) {
               forceToAxis: true
             },
             scrollbar: {
-              el: '.swiper-scrollbar',
+              el: this.scrollbar,
               hide: false,
               draggable: true,
             },
@@ -68,6 +70,14 @@ if (!customElements.get('products-list')) {
               }
             }
           });
+
+          const updateScrollbarVisibility = (swiper) => {
+            const divider = swiper.size / (swiper.virtualSize + swiper.params.slidesOffsetBefore - (swiper.params.centeredSlides ? swiper.snapGrid[0] : 0));
+            this.toggleAttribute('data-is-scrollbar-hidden', divider >=1);
+          }
+
+          this.swiper.on('init update resize', updateScrollbarVisibility);
+          updateScrollbarVisibility(this.swiper);
         } else {
           if (this.swiper) {
             this.swiper.destroy();
